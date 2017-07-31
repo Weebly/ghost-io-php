@@ -1,0 +1,24 @@
+{
+    "name": "weebly/ghost-io-php",
+    "description": "SDK library for php to simplify ghost.io API requests.",
+    "keywords": ["ghostio", "blog", "library"],
+    "license": "DBAD",
+    "authors": [
+        {
+            "name": "Enrique Perez",
+            "email": "enrique@weebly.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=5.4"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*"
+    },
+	"autoload": {
+        "psr-4": {
+            "GhostIO\\": "src/"
+        }
+    }
+}
