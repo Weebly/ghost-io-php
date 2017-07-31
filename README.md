@@ -9,3 +9,7 @@ Features
 * PSR-4 autoloading compliant structure
 * Unit-Testing with PHPUnit
 * Easy to use library
+
+
+
+THIS IS NOT POSSIBLE IF WE CANT DO CHANGES ON THE GHOST IO DATABASE (MEANING THAT WE NEED TO HOST IT).
