@@ -10,7 +10,11 @@ use JsonSerializable;
 abstract class JsonSerializableObject implements JsonSerializable
 {
 
-	// function called when encoded with json_encode
+	/**
+	 * This method gets all the properties for the entities and 
+	 * makes them part of the encoded json when running json_encode.
+	 * @return array  	All properties
+	 */
     public function jsonSerialize()
     {
         return get_object_vars($this);

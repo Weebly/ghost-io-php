@@ -11,5 +11,34 @@ Features
 * Easy to use library
 
 
+Instalation
+-----
 
-THIS IS NOT POSSIBLE IF WE CANT DO CHANGES ON THE GHOST IO DATABASE (MEANING THAT WE NEED TO HOST IT).
+Right now is only on my personal repo <enrique/ghost-io-php> but the idea is that later we can serve it as a packagist library under the weebly name.
+
+Make sure you're loading the composer libraries:
+
+```
+include_once "vendor/autoload.php";
+```
+
+
+Usage
+-----
+
+```
+use GhostIO\GhostIO;
+
+$ghost = new GhostIO(
+	'https://your-blog.ghost.io',   // This is the base url for your blog
+	'example@example.com',  		// This is tne user email (username) of the user that will do the API requests
+	'password', 					// The user password
+	'ghost-frontend', 				// The client id
+	'the-client-secret'				// The client secret
+);
+
+$res = $ghost->getAllPosts(); // retrieve all posts from the ghost server
+
+```
+
+Enjoy!
