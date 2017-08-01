@@ -30,11 +30,11 @@ Usage
 use GhostIO\GhostIO;
 
 $ghost = new GhostIO(
-	'https://your-blog.ghost.io',   // This is the base url for your blog
-	'example@example.com',  		// This is tne user email (username) of the user that will do the API requests
-	'password', 					// The user password
-	'ghost-frontend', 				// The client id
-	'the-client-secret'				// The client secret
+	'https://your-blog.ghost.io',	// This is the base url for your blog
+	'example@example.com',	// This is tne user email (username) of the user that will do the API requests
+	'password',	// The user password
+	'ghost-frontend',	// The client id
+	'the-client-secret'	// The client secret
 );
 
 $res = $ghost->getAllPosts(); // retrieve all posts from the ghost server
