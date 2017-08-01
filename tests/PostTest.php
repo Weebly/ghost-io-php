@@ -1,6 +1,6 @@
 <?php 
 
-use GhostIO\Post;
+use GhostIO\Entities\Post;
 
 /**
 *  Corresponding Class to test Post class

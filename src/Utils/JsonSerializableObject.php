@@ -1,6 +1,6 @@
 <?php
 
-namespace GhostIO;
+namespace GhostIO\Utils;
 
 use JsonSerializable;
 

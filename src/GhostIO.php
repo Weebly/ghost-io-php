@@ -2,30 +2,74 @@
 
 namespace GhostIO;
 
-class GhostIO {
+class GhostIO 
+{
 
+	protected $username;
+	protected $password;
 	protected $clientId;
 	protected $clientSecret;
-	protected $apiUrl;
 
 	protected $httpClient;
 
-	public function __construct()
+	protected $token;
+
+	public function __construct($url, $username, $password, $clientId, $clientSecret)
 	{
-		$this->httpClient = new GuzzleHttp\Client();
+		$this->httpClient = new \GuzzleHttp\Client([
+			'base_uri' => $url . '/ghost/api/v0.1/'
+		]);
+
+		// initialize global properties
+		$this->username = $username;
+		$this->password = $password;
+		$this->clientId = $clientId;
+		$this->clientSecret = $clientSecret;
+
+		$this->authenticate();
 	}
 
-	public function getPosts()
+	protected function authenticate()
 	{
-		// This will get you the posts that are on ghost.io
-		$res = $httpClient->request('GET', $this->apiUrl . 'posts');
-		
-		echo $res->getStatusCode();
-		// "200"
-		echo $res->getHeader('content-type');
-		// 'application/json; charset=utf8'
-		echo $res->getBody();
-		// {"type":"User"...'
+		$response = $this->httpClient->request('POST', 'authentication/token', [
+			'form_params' => [
+				'grant_type' 	=> 'password',
+				'username' 		=> $this->username,
+				'password' 		=> $this->password,
+				'client_id' 	=> $this->clientId,
+				'client_secret' => $this->clientSecret
+			]
+		]);
+
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!$response_data->access_token) {
+			throw new Exception('Unable to get access token.');
+			
+		}
+		$this->token = $response_data->access_token;
 	}
+
+
+	public function getAllPosts()
+	{
+
+		$response = $this->httpClient->request('GET', 'posts', [
+			'headers' => [
+				'Authorization' => 'Bearer ' . $this->token,
+				'Content-Type' 	 => 'application/json'
+			],
+			'query' => [
+				'fields' => "title,url"
+			]
+		]);
+
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!$response_data->posts) {
+			throw new Exception('Unable to get the posts.');
+			
+		}
+		return $response_data->posts;
+	}
+
 
 }

@@ -1,6 +1,6 @@
 <?php 
 
-use GhostIO\Tag;
+use GhostIO\Entities\Tag;
 
 /**
 *  Corresponding Class to test Tag class

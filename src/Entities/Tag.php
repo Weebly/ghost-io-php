@@ -1,8 +1,8 @@
 <?php
 
-namespace GhostIO;
+namespace GhostIO\Entities;
 
-use GhostIO\JsonSerializableObject;
+use GhostIO\Utils\JsonSerializableObject;
 
 /**
 * A tag

@@ -1,6 +1,6 @@
 <?php 
 
-use GhostIO\User;
+use GhostIO\Entities\User;
 
 /**
 *  Corresponding Class to test User class
