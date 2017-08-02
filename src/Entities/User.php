@@ -26,16 +26,4 @@ class User extends JsonSerializableObject
 	protected $updatedBy;
 	protected $website;
 
-	function __construct($postData = null)
-	{
-		if ($postData) {
-			foreach ($postData as $key => $value) {
-				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
-				$key = lcfirst($key);
-
-				$this->{$key} = $value;
-			}
-		}
-	}
-
 }

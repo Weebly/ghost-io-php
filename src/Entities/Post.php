@@ -31,18 +31,6 @@ class Post extends JsonSerializableObject
 	protected $visibility;
 	protected $featureImage;
 
-	function __construct($postData = null)
-	{
-		if ($postData) {
-			foreach ($postData as $key => $value) {
-				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
-				$key = lcfirst($key);
-
-				$this->{$key} = $value;
-			}
-		}
-	}
-
     /**
      * @return mixed
      */

@@ -18,7 +18,7 @@ Right now is only on my personal repo <enrique/ghost-io-php> but the idea is tha
 
 Make sure you're loading the composer libraries:
 
-```
+```php
 include_once "vendor/autoload.php";
 ```
 
@@ -26,7 +26,7 @@ include_once "vendor/autoload.php";
 Usage
 -----
 
-```
+```php
 use GhostIO\GhostIO;
 
 $ghost = new GhostIO(
