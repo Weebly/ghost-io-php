@@ -4,12 +4,8 @@ namespace GhostIO\Entities;
 
 use GhostIO\Utils\JsonSerializableObject;
 
-/**
-* A tag
-*/
 class Tag extends JsonSerializableObject
 {
-		
 	protected $id;
 	protected $uid;
 	protected $name;
@@ -24,9 +20,16 @@ class Tag extends JsonSerializableObject
 	protected $updatedAt;
 	protected $updatedBy;
 
-	function __construct()
+	function __construct($postData = null)
 	{
-		# code...
+		if ($postData) {
+			foreach ($postData as $key => $value) {
+				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+				$key = lcfirst($key);
+
+				$this->{$key} = $value;
+			}
+		}
 	}
 
 }

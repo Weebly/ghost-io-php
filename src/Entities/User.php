@@ -4,9 +4,6 @@ namespace GhostIO\Entities;
 
 use GhostIO\Utils\JsonSerializableObject;
 
-/**
-* Class that contains the values of a User
-*/
 class User extends JsonSerializableObject
 {
 	protected $id;
@@ -29,9 +26,16 @@ class User extends JsonSerializableObject
 	protected $updatedBy;
 	protected $website;
 
-	function __construct()
+	function __construct($postData = null)
 	{
-		# code...
+		if ($postData) {
+			foreach ($postData as $key => $value) {
+				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+				$key = lcfirst($key);
+
+				$this->{$key} = $value;
+			}
+		}
 	}
 
 }

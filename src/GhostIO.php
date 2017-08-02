@@ -2,6 +2,9 @@
 
 namespace GhostIO;
 
+use GhostIO\Utils\Collection;
+use GhostIO\Entities\Post;
+
 class GhostIO 
 {
 	/**
@@ -101,15 +104,51 @@ class GhostIO
 	 * because it will get all the records if you limit the request as "all"
 	 * @return Collection  		All posts
 	 */
-	public function getAllPosts()
+	public function getAllPosts(array $fields = [])
 	{
-		$response = $this->httpClient->request('GET', 'posts', [
+		// Here we prepare the guzzle request
+		$options = [
 			'headers' => [
 				'Authorization' => 'Bearer ' . $this->token,
 				'Content-Type' 	 => 'application/json'
-			],
-			'query' => [
-				'fields' => "title,url"
+			]
+		];
+
+		// filtering the fields we want to get
+		if (!empty($fields)) {
+			$options['query'] = [ 'fields' => $fields ];
+		}
+
+		// Do the /posts request
+		$response = $this->httpClient->request('GET', 'posts', $options);
+
+		// Make sure we are getting some posts
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!$response_data->posts) {
+			throw new Exception('Unable to get the posts.');
+		}
+
+		// Cleanup the data into objects
+		$postCollection = new Collection();
+		foreach ($response_data->posts as $postData) {
+			$post = new Post($postData);
+			$postCollection->add($post);
+		}
+
+		return $postCollection;
+	}
+
+	/**
+	 * Method to get all the posts of the account. Be carefull with this 
+	 * because it will get all the records if you limit the request as "all"
+	 * @return Post  		The requested post
+	 */
+	public function getPostById($postId)
+	{
+		$response = $this->httpClient->request('GET', "posts/$postId", [
+			'headers' => [
+				'Authorization' => 'Bearer ' . $this->token,
+				'Content-Type' 	 => 'application/json'
 			]
 		]);
 
@@ -117,9 +156,11 @@ class GhostIO
 		$response_data = json_decode($response->getBody()->getContents());
 		if (!$response_data->posts) {
 			throw new Exception('Unable to get the posts.');
-			
 		}
-		return $response_data->posts;
+
+		$post = new Post($response_data->posts[0]);
+
+		return $post;
 	}
 
 }

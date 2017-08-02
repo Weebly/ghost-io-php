@@ -4,13 +4,10 @@ namespace GhostIO\Entities;
 
 use GhostIO\Utils\JsonSerializableObject;
 
-/**
-* Class that contains the values of a Post
-*/
 class Post extends JsonSerializableObject
 {
 	protected $id;
-	protected $uid;
+	protected $uuid;
 	protected $title;
 	protected $slug;
 	protected $markdown;
@@ -30,10 +27,20 @@ class Post extends JsonSerializableObject
 	protected $publishedBy;
 	protected $author;
 	protected $url;
+	protected $language;
+	protected $visibility;
+	protected $featureImage;
 
-	function __construct()
+	function __construct($postData = null)
 	{
-		# code...
+		if ($postData) {
+			foreach ($postData as $key => $value) {
+				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+				$key = lcfirst($key);
+
+				$this->{$key} = $value;
+			}
+		}
 	}
 
 }
