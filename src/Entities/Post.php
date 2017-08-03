@@ -55,4 +55,19 @@ class Post extends JsonSerializableObject
         return $this->url;
     }
 
+    /**
+     * @return string
+     */
+    public function getMarkdown()
+    {
+        return $this->markdown;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
 }
