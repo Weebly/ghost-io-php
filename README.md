@@ -11,8 +11,8 @@ Features
 * Easy to use library
 
 
-Instalation
------
+Installation
+------------
 
 Right now is only on my personal repo <enrique/ghost-io-php> but the idea is that later we can serve it as a packagist library under the weebly name. So to add this right now to the project using composer we can do the following on out composer.json file:
 
@@ -73,6 +73,9 @@ The following list shows what methods are available and the route that they repr
 | $ghost->getUserBySlug($slug)      | /users:slug   		|
 | $ghost->getUserByEmail($email)    | /users/email:email   	|
 
+
+Documentation
+-------------
 
 For more documentation, check the ghost.io API docs here: [GhostIO API Docs](https://api.ghost.org).
 
