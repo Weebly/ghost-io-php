@@ -64,5 +64,6 @@ Available Client Methods
 | $ghost->getPost($postId)          | /posts:id     |
 
 
-For more documentation, check the ghost.io API docs here: [GhostIO API Docs](https://api.ghost.org)
+For more documentation, check the ghost.io API docs here: [GhostIO API Docs](https://api.ghost.org).
+
 Enjoy!

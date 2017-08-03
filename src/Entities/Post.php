@@ -32,7 +32,7 @@ class Post extends JsonSerializableObject
 	protected $featureImage;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitle()
     {
@@ -40,7 +40,7 @@ class Post extends JsonSerializableObject
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUrl()
     {
