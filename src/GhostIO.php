@@ -3,6 +3,7 @@
 namespace GhostIO;
 
 use GhostIO\Providers\PostProvider;
+use GhostIO\Providers\TagProvider;
 
 class GhostIO
 {

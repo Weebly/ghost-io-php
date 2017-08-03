@@ -3,15 +3,15 @@
 namespace GhostIO\Tests\Providers;
 
 use PHPUnit_Framework_TestCase;
-use GhostIO\Providers\PostProvider;
+use GhostIO\Providers\TagProvider;
 use GhostIO\Tests\Mocks\ResponseDummy;
 use GhostIO\Tests\Mocks\ResponseBodyDummy;
 
 /**
-*  Corresponding Class to test PostProvider class
+*  Corresponding Class to test TagProvider class
 *  @author Enrique <enrique@weebly.com>
 */
-class PostProviderTest extends PHPUnit_Framework_TestCase
+class TagProviderTest extends PHPUnit_Framework_TestCase
 {
 
 	protected $provider;
@@ -21,7 +21,7 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	protected function setUp()
     {
     	$this->clientMock = $this->initClientMock();
-        $this->provider = PostProvider::getInstance($this->clientMock);
+        $this->provider = TagProvider::getInstance($this->clientMock);
         $this->provider->setClient($this->clientMock);
     }
 
@@ -47,11 +47,11 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function testProvidersCanGetAllPostsWithOneResult()
+	public function testProvidersCanGetAllTagsWithOneResult()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'tags' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
@@ -61,23 +61,23 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 
 		$this->assertInstanceOf(\GhostIO\Utils\Collection::class, $result);
 
-		$post = $result->current();
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
+		$tag = $result->current();
+		$this->assertNotNull($tag);
+		$this->assertInstanceOf(\GhostIO\Entities\Tag::class, $tag);
 	}
 
 
-	public function testProvidersCanGetAllPostsWithFieldsParameter()
+	public function testProvidersCanGetAllTagsWithFieldsParameter()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'tags' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
         		->with(
                        $this->equalTo('GET'),
-                       $this->equalTo('posts'),
+                       $this->equalTo('tags'),
                        [ 'query' => [ 'fields' => ['id', 'html']] ]
                    )
             	->willReturn($apiResponse);
@@ -86,19 +86,19 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 
 		$this->assertInstanceOf(\GhostIO\Utils\Collection::class, $result);
 
-		$post = $result->current();
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
+		$tag = $result->current();
+		$this->assertNotNull($tag);
+		$this->assertInstanceOf(\GhostIO\Entities\Tag::class, $tag);
 	}
 
 	/**
      * @expectedException Exception
      */
-	public function testProvidersThrowsAnExceptionIfNoPostsAreReturned()
+	public function testProvidersThrowsAnExceptionIfNoTagsAreReturned()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'not_posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'not_tags' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
@@ -108,22 +108,23 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function testProviderCanFindAPostById()
+	public function testProviderCanFindATagById()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [[ 'id' => 1 ]] ]);
+		$apiResponse->setResponseBody([ 'tags' => [[ 'id' => 1 ]] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
             	->willReturn($apiResponse);
 
-		$post = $this->provider->getById(1);
+		$tag = $this->provider->getById(1);
 
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
-		$this->assertEquals($post->getId(), 1);
+		$this->assertNotNull($tag);
+		$this->assertInstanceOf(\GhostIO\Entities\Tag::class, $tag);
+		$this->assertEquals($tag->getId(), 1);
 	}
 
 }
+
 

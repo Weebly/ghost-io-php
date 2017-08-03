@@ -7,10 +7,12 @@ use GhostIO\Utils\JsonSerializableObject;
 class Tag extends JsonSerializableObject
 {
 	protected $id;
-	protected $uid;
+	protected $uuid;
 	protected $name;
+	protected $description;
 	protected $slug;
 	protected $hidden;
+	protected $visibility;
 	protected $parent;
 	protected $image;
 	protected $metaTitle;
@@ -20,4 +22,11 @@ class Tag extends JsonSerializableObject
 	protected $updatedAt;
 	protected $updatedBy;
 
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

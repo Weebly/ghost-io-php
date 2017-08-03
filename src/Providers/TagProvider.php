@@ -4,9 +4,11 @@ namespace GhostIO\Providers;
 
 use GhostIO\Entities\Tag;
 use GhostIO\Utils\Collection;
+use GhostIO\Providers\Traits\Singleton;
 
-class TagProvider extends AbstractProvider
+class TagProvider
 {
+	use Singleton;
 
 	/**
 	 * Method to get all the tags of the account.
@@ -26,7 +28,7 @@ class TagProvider extends AbstractProvider
 
 		// Make sure we are getting some tags
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->tags) {
+		if (!isset($response_data->tags)) {
 			throw new \Exception('Unable to get the tags.');
 		}
 
@@ -50,7 +52,7 @@ class TagProvider extends AbstractProvider
 
 		// Make sure we are getting some tags
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->tags) {
+		if (!isset($response_data->tags)) {
 			throw new \Exception('Unable to get the tags.');
 		}
 

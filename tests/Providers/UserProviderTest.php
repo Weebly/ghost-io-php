@@ -3,15 +3,15 @@
 namespace GhostIO\Tests\Providers;
 
 use PHPUnit_Framework_TestCase;
-use GhostIO\Providers\PostProvider;
+use GhostIO\Providers\UserProvider;
 use GhostIO\Tests\Mocks\ResponseDummy;
 use GhostIO\Tests\Mocks\ResponseBodyDummy;
 
 /**
-*  Corresponding Class to test PostProvider class
+*  Corresponding Class to test UserProvider class
 *  @author Enrique <enrique@weebly.com>
 */
-class PostProviderTest extends PHPUnit_Framework_TestCase
+class UserProviderTest extends PHPUnit_Framework_TestCase
 {
 
 	protected $provider;
@@ -21,7 +21,7 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	protected function setUp()
     {
     	$this->clientMock = $this->initClientMock();
-        $this->provider = PostProvider::getInstance($this->clientMock);
+        $this->provider = UserProvider::getInstance($this->clientMock);
         $this->provider->setClient($this->clientMock);
     }
 
@@ -47,11 +47,11 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function testProvidersCanGetAllPostsWithOneResult()
+	public function testProvidersCanGetAllUsersWithOneResult()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'users' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
@@ -61,23 +61,23 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 
 		$this->assertInstanceOf(\GhostIO\Utils\Collection::class, $result);
 
-		$post = $result->current();
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
+		$user = $result->current();
+		$this->assertNotNull($user);
+		$this->assertInstanceOf(\GhostIO\Entities\User::class, $user);
 	}
 
 
-	public function testProvidersCanGetAllPostsWithFieldsParameter()
+	public function testProvidersCanGetAllUsersWithFieldsParameter()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'users' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
         		->with(
                        $this->equalTo('GET'),
-                       $this->equalTo('posts'),
+                       $this->equalTo('users'),
                        [ 'query' => [ 'fields' => ['id', 'html']] ]
                    )
             	->willReturn($apiResponse);
@@ -86,19 +86,19 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 
 		$this->assertInstanceOf(\GhostIO\Utils\Collection::class, $result);
 
-		$post = $result->current();
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
+		$user = $result->current();
+		$this->assertNotNull($user);
+		$this->assertInstanceOf(\GhostIO\Entities\User::class, $user);
 	}
 
 	/**
      * @expectedException Exception
      */
-	public function testProvidersThrowsAnExceptionIfNoPostsAreReturned()
+	public function testProvidersThrowsAnExceptionIfNoUsersAreReturned()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'not_posts' => [ 'id' => 0 ] ]);
+		$apiResponse->setResponseBody([ 'not_users' => [ 'id' => 0 ] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
@@ -108,21 +108,21 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
 	}
 
 
-	public function testProviderCanFindAPostById()
+	public function testProviderCanFindAUserById()
 	{
 		// Prepare the mock so it returns the data we expect
 		$apiResponse = new ResponseDummy();
-		$apiResponse->setResponseBody([ 'posts' => [[ 'id' => 1 ]] ]);
+		$apiResponse->setResponseBody([ 'users' => [[ 'id' => 1 ]] ]);
 
         $this->clientMock->expects($this->once())
         		->method('request')
             	->willReturn($apiResponse);
 
-		$post = $this->provider->getById(1);
+		$user = $this->provider->getById(1);
 
-		$this->assertNotNull($post);
-		$this->assertInstanceOf(\GhostIO\Entities\Post::class, $post);
-		$this->assertEquals($post->getId(), 1);
+		$this->assertNotNull($user);
+		$this->assertInstanceOf(\GhostIO\Entities\User::class, $user);
+		$this->assertEquals($user->getId(), 1);
 	}
 
 }

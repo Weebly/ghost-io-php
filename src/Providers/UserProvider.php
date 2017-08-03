@@ -4,9 +4,11 @@ namespace GhostIO\Providers;
 
 use GhostIO\Entities\User;
 use GhostIO\Utils\Collection;
+use GhostIO\Providers\Traits\Singleton;
 
-class UserProvider extends AbstractProvider
+class UserProvider
 {
+	use Singleton;
 
 	/**
 	 * Method to get all the users of the account.
@@ -26,14 +28,14 @@ class UserProvider extends AbstractProvider
 
 		// Make sure we are getting some users
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->users) {
+		if (!isset($response_data->users)) {
 			throw new \Exception('Unable to get the users.');
 		}
 
 		// Cleanup the data into objects
 		$userCollection = new Collection();
 		foreach ($response_data->users as $userData) {
-			$user = new Tag($userData);
+			$user = new User($userData);
 			$userCollection->add($user);
 		}
 
@@ -50,11 +52,11 @@ class UserProvider extends AbstractProvider
 
 		// Make sure we are getting some users
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->users) {
+		if (!isset($response_data->users)) {
 			throw new \Exception('Unable to get the users.');
 		}
 
-		$user = new Tag($response_data->users[0]);
+		$user = new User($response_data->users[0]);
 
 		return $user;
 	}

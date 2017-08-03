@@ -4,9 +4,11 @@ namespace GhostIO\Providers;
 
 use GhostIO\Entities\Post;
 use GhostIO\Utils\Collection;
+use GhostIO\Providers\Traits\Singleton;
 
-class PostProvider extends AbstractProvider
+class PostProvider
 {
+	use Singleton;
 
 	/**
 	 * Method to get all the posts of the account. Be carefull with this

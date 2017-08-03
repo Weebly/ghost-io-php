@@ -1,10 +1,20 @@
 <?php
 
-namespace GhostIO\Providers;
+namespace GhostIO\Providers\Traits;
 
 use GhostIO\Client;
 
-class AbstractProvider
+/*
+|--------------------------------------------------------------------------
+| Singleton Provider Trait
+|--------------------------------------------------------------------------
+|
+| This trait need to be added to all the provider classes so they work
+| as singleton instances.
+|
+*/
+
+trait Singleton
 {
 	protected static $instance;
 

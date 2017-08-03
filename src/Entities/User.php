@@ -26,4 +26,11 @@ class User extends JsonSerializableObject
 	protected $updatedBy;
 	protected $website;
 
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }
