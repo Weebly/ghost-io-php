@@ -60,4 +60,24 @@ class TagProvider
 
 		return $tag;
 	}
+
+	/**
+	 * Gets the tag object by the slug
+	 * @param  string $slug The tag slug
+	 * @return Tag       The tag instance
+	 */
+	public function getBySlug($slug)
+	{
+		$response = $this->client->request('GET', "tags/slug/$slug", []);
+
+		// Make sure we are getting some tags
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!isset($response_data->tags)) {
+			throw new \Exception('Unable to get the tag.');
+		}
+
+		$tag = new Tag($response_data->tags[0]);
+
+		return $tag;
+	}
 }

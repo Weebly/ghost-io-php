@@ -9,6 +9,10 @@ class User extends JsonSerializableObject
 	protected $id;
 	protected $uuid;
 	protected $accesibility;
+	protected $email;
+	protected $status;
+	protected $language;
+	protected $visibility;
 	protected $bio;
 	protected $cover;
 	protected $createdAt;

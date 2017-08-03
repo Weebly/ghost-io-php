@@ -60,4 +60,45 @@ class UserProvider
 
 		return $user;
 	}
+
+	/**
+	 * Gets the user object by the slug
+	 * @param  string $slug The user slug
+	 * @return User       	The user instance
+	 */
+	public function getBySlug($slug)
+	{
+		$response = $this->client->request('GET', "users/slug/$slug", []);
+
+		// Make sure we are getting some users
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!isset($response_data->users)) {
+			throw new \Exception('Unable to get the user.');
+		}
+
+		$user = new User($response_data->users[0]);
+
+		return $user;
+	}
+
+
+	/**
+	 * Gets the user object by the email
+	 * @param  string $email 	The user email
+	 * @return User       		The user instance
+	 */
+	public function getByEmail($email)
+	{
+		$response = $this->client->request('GET', "users/email/$email", []);
+
+		// Make sure we are getting some users
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!isset($response_data->users)) {
+			throw new \Exception('Unable to get the user.');
+		}
+
+		$user = new User($response_data->users[0]);
+
+		return $user;
+	}
 }

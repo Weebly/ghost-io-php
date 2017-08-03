@@ -56,7 +56,27 @@ class PostProvider
 		// Make sure we are getting some posts
 		$response_data = json_decode($response->getBody()->getContents());
 		if (!isset($response_data->posts)) {
-			throw new \Exception('Unable to get the posts.');
+			throw new \Exception('Unable to get the post.');
+		}
+
+		$post = new Post($response_data->posts[0]);
+
+		return $post;
+	}
+
+	/**
+	 * Gets the post object by the slug
+	 * @param  string $slug The post slug
+	 * @return Post       The post instance
+	 */
+	public function getBySlug($slug)
+	{
+		$response = $this->client->request('GET', "posts/slug/$slug", []);
+
+		// Make sure we are getting some posts
+		$response_data = json_decode($response->getBody()->getContents());
+		if (!isset($response_data->posts)) {
+			throw new \Exception('Unable to get the post.');
 		}
 
 		$post = new Post($response_data->posts[0]);
