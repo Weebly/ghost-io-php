@@ -20,6 +20,11 @@ class AbstractProvider
 
 	protected function __construct(Client $client)
 	{
+		$this->setClient($client);
+	}
+
+	public function setClient(Client $client)
+	{
 		$this->client = $client;
 	}
 

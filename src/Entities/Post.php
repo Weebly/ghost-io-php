@@ -32,6 +32,14 @@ class Post extends JsonSerializableObject
 	protected $featureImage;
 
     /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string
      */
     public function getTitle()
@@ -46,4 +54,5 @@ class Post extends JsonSerializableObject
     {
         return $this->url;
     }
+
 }

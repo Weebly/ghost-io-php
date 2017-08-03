@@ -27,7 +27,8 @@ class PostProvider extends AbstractProvider
 
 		// Make sure we are getting some posts
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->posts) {
+
+		if (!isset($response_data->posts)) {
 			throw new \Exception('Unable to get the posts.');
 		}
 
@@ -52,7 +53,7 @@ class PostProvider extends AbstractProvider
 
 		// Make sure we are getting some posts
 		$response_data = json_decode($response->getBody()->getContents());
-		if (!$response_data->posts) {
+		if (!isset($response_data->posts)) {
 			throw new \Exception('Unable to get the posts.');
 		}
 

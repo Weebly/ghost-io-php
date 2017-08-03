@@ -38,14 +38,33 @@ class GhostIO
 	}
 
 	/**
-	 * Method to get all the posts of the account. Be carefull with this
-	 * because it will get all the records if you limit the request as "all"
+	 * Method to get a post by the id.
 	 * @return Post  		The requested post
 	 */
 	public function getPostById($postId)
 	{
 		$provider = PostProvider::getInstance($this->client);
 		return $provider->getById($postId);
+	}
+
+	/**
+	 * Method to get all the Tags of the account.
+	 * @return Collection  		All tags
+	 */
+	public function getAllTags(array $fields = [])
+	{
+		$provider = TagProvider::getInstance($this->client);
+		return $provider->getAll($fields);
+	}
+
+	/**
+	 * Method to get a Tag by the id.
+	 * @return Tag  		The requested tag
+	 */
+	public function getTagById($tagId)
+	{
+		$provider = TagProvider::getInstance($this->client);
+		return $provider->getById($tagId);
 	}
 
 }
