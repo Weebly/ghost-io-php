@@ -19,6 +19,9 @@ class PostProvider
 	{
 		$options = [];
 
+		// We include all the tag information by default
+		$options['query'] = [ 'include' => ['tags'] ];
+
 		// filtering the fields we want to get
 		if (!empty($fields)) {
 			$options['query'] = [ 'fields' => $fields ];

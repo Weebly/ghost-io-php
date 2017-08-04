@@ -2,6 +2,7 @@
 
 namespace GhostIO\Entities;
 
+use GhostIO\Utils\Collection;
 use GhostIO\Utils\JsonSerializableObject;
 
 class Post extends JsonSerializableObject
@@ -30,6 +31,41 @@ class Post extends JsonSerializableObject
 	protected $language;
 	protected $visibility;
 	protected $featureImage;
+
+
+	/**
+     * Constructor. We want to make sure that when we send data to it, it will
+     * add those values to the property of the object.
+     * @param array $data 	Data for the object
+     */
+    function __construct($data = null)
+	{
+		if ($data) {
+			foreach ($data as $key => $value) {
+
+				// Here we will create the tags collection of all the
+				// tags that are related to this post
+				if ($key == 'tags') {
+
+					// Cleanup the data into objects
+					$tagCollection = new Collection();
+					foreach ($value as $tagData) {
+						$tag = new Tag($tagData);
+						$tagCollection->add($tag);
+					}
+
+					$this->tags = $tagCollection;
+					continue;
+				}
+
+				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+				$key = lcfirst($key);
+
+				$this->{$key} = $value;
+			}
+		}
+	}
+
 
     /**
      * @return integer
