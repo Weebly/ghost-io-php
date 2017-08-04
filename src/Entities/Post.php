@@ -31,6 +31,7 @@ class Post extends JsonSerializableObject
 	protected $language;
 	protected $visibility;
 	protected $featureImage;
+	protected $tags;
 
 
 	/**
@@ -257,5 +258,13 @@ class Post extends JsonSerializableObject
     public function getFeatureImage()
     {
         return $this->featureImage;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
