@@ -60,18 +60,18 @@ Available Client Methods
 
 The following list shows what methods are available and the route that they represent on the ghost.io API:
 
-| Method                            | API service   		|
-| --------------------------------- | --------------------- |
-| $ghost->getAllPosts($fields = []) | /posts        		|
-| $ghost->getPostById($postId)      | /posts:id     		|
-| $ghost->getPostBySlug($slug) 		| /posts:slug   		|
-| $ghost->getAllTags($fields = []) 	| /tags         		|
-| $ghost->getTagById($tagId)        | /tags:id      		|
-| $ghost->getTagBySlug($slug) 		| /tags:slug    		|
-| $ghost->getAllUsers($fields = []) | /users        		|
-| $ghost->getUserById($userId) 		| /users:id     		|
-| $ghost->getUserBySlug($slug)      | /users:slug   		|
-| $ghost->getUserByEmail($email)    | /users/email:email   	|
+| Method                            | API service   		| Description                                                                                                     |
+| --------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| $ghost->getAllPosts($fields = []) | /posts        		| Get a collection with all the posts of the blog. Some filters apply.                                            |
+| $ghost->getPostById($postId)      | /posts:id     		| This will find one specific post by the ID.                                                                     |
+| $ghost->getPostBySlug($slug) 		| /posts:slug   		| This will find one specific post by the slug.                                                                   |
+| $ghost->getAllTags($fields = []) 	| /tags         		| Get a collection with all the tags (categories) that are defined for this blog of the blog. Some filters apply. |
+| $ghost->getTagById($tagId)        | /tags:id      		| This will find one specific tag by the ID.                                                                      |
+| $ghost->getTagBySlug($slug) 		| /tags:slug    		| This will find one specific tag by the slug.                                                                    |
+| $ghost->getAllUsers($fields = []) | /users        		| Get a collection with all the users of the blog. Some filters apply.                                            |
+| $ghost->getUserById($userId) 		| /users:id     		| This will find one specific user by the ID.                                                                     |
+| $ghost->getUserBySlug($slug)      | /users:slug   		| This will find one specific user by the slug.                                                                   |
+| $ghost->getUserByEmail($email)    | /users/email:email   	| This will find one specific user by his email address.                                                          |
 
 
 Documentation
