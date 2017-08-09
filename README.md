@@ -62,16 +62,16 @@ The following list shows what methods are available and the route that they repr
 
 | Method                            | API service   		| Description                                                          |
 | --------------------------------- | --------------------- | -------------------------------------------------------------------- |
-| $ghost->getAllPosts($fields = []) | /posts        		| Get a collection with all the posts of the blog.Some filters apply.  |
-| $ghost->getPostById($postId)      | /posts:id     		| This will find one specific post by the ID.                          |
-| $ghost->getPostBySlug($slug) 		| /posts:slug   		| This will find one specific post by the slug.                        |
-| $ghost->getAllTags($fields = []) 	| /tags         		| Get a collection with all the tags (categories).                     |
-| $ghost->getTagById($tagId)        | /tags:id      		| This will find one specific tag by the ID.                           |
-| $ghost->getTagBySlug($slug) 		| /tags:slug    		| This will find one specific tag by the slug.                         |
-| $ghost->getAllUsers($fields = []) | /users        		| Get a collection with all the users of the blog. Some filters apply. |
-| $ghost->getUserById($userId) 		| /users:id     		| This will find one specific user by the ID.                          |
-| $ghost->getUserBySlug($slug)      | /users:slug   		| This will find one specific user by the slug.                        |
-| $ghost->getUserByEmail($email)    | /users/email:email   	| This will find one specific user by his email address.               |
+| <pre>$ghost->getAllPosts($fields = [])</pre> | /posts        		| Get a collection with all the posts of the blog.Some filters apply.  |
+| <pre>$ghost->getPostById($postId)</pre>      | /posts:id     		| This will find one specific post by the ID.                          |
+| <pre>$ghost->getPostBySlug($slug)</pre> 		| /posts:slug   		| This will find one specific post by the slug.                        |
+| <pre>$ghost->getAllTags($fields = [])</pre> 	| /tags         		| Get a collection with all the tags (categories).                     |
+| <pre>$ghost->getTagById($tagId)</pre>        | /tags:id      		| This will find one specific tag by the ID.                           |
+| <pre>$ghost->getTagBySlug($slug)</pre> 		| /tags:slug    		| This will find one specific tag by the slug.                         |
+| <pre>$ghost->getAllUsers($fields = [])</pre> | /users        		| Get a collection with all the users of the blog. Some filters apply. |
+| <pre>$ghost->getUserById($userId)</pre> 		| /users:id     		| This will find one specific user by the ID.                          |
+| <pre>$ghost->getUserBySlug($slug)</pre>      | /users:slug   		| This will find one specific user by the slug.                        |
+| <pre>$ghost->getUserByEmail($email)</pre>    | /users/email:email   	| This will find one specific user by his email address.               |
 
 
 Documentation
