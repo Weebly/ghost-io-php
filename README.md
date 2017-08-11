@@ -55,8 +55,7 @@ $res = $ghost->getAllPosts(); // retrieve all posts from the ghost server
 
 ```
 
-Available Client Methods
-------------------------
+## Available Client Methods
 
 The following list shows what methods are available and the route that they represent on the ghost.io API:
 
@@ -74,8 +73,11 @@ The following list shows what methods are available and the route that they repr
 | <pre>$ghost->getUserByEmail($email)</pre>    | /users/email:email   	| This will find one specific user by his email address.               |
 
 
-Documentation
--------------
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Documentation
 
 For more documentation, check the ghost.io API docs here: [GhostIO API Docs](https://api.ghost.org).
 
