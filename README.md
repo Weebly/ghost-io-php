@@ -1,6 +1,10 @@
 Ghost IO Unofficial PHP library
 ===============================
 
+[![CircleCI](https://img.shields.io/circleci/project/github/weebly/ghost-io-php.svg)]()
+[![MadeBy](https://img.shields.io/badge/made%20by-weebly-2f8be9.svg)]()
+
+
 This library is intended to help developer to use the Ghost.io API with their php code.
 
 Features
