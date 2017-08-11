@@ -7,26 +7,24 @@ Ghost IO Unofficial PHP library
 
 This library is intended to help developer to use the Ghost.io API with their php code.
 
-Features
---------
+## Features
 
 * PSR-4 autoloading compliant structure
 * Unit-Testing with PHPUnit
 * Easy to use library
 
 
-Installation
-------------
+## Installation
 
-Right now is only on my personal repo <enrique/ghost-io-php> but the idea is that later we can serve it as a packagist library under the weebly name. So to add this right now to the project using composer we can do the following on out composer.json file:
+We use packagist to serve this library so is easier to include to any of your projects. Make sure you have composer available in your PATH. To do this you can run the following command in the terminal:
+
+```shell
+composer require weebly/ghost-io-php
+```
+
+For the most recent dev version:
 
 ```json
-"repositories": [
-  {
-    "url": "https://github.intern.weebly.net/enrique/ghost-io-php",
-    "type": "git"
-  }
-],
 "require": {
   "weebly/ghost-io-php": "master@dev"
 },
@@ -41,8 +39,7 @@ composer install
 As a final check you could review your vendor library to see if you have a weeblu/ghost-io-php folder created.
 Now you're ready to use this on you're code.
 
-Usage
------
+## Usage
 
 ```php
 use GhostIO\GhostIO;
