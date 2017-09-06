@@ -2,7 +2,7 @@
     "name": "weebly/ghost-io-php",
     "description": "SDK library for php to simplify ghost.io API requests.",
     "keywords": ["ghostio", "blog", "library"],
-    "license": "DBAD",
+    "license": "BSD-2-Clause",
     "authors": [
         {
             "name": "Enrique Perez",
