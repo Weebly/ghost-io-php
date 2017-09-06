@@ -1,7 +1,7 @@
 Ghost IO Unofficial PHP library
 ===============================
 
-[![CircleCI](https://img.shields.io/circleci/project/github/weebly/ghost-io-php.svg)]()
+[![CircleCI](https://img.shields.io/circleci/project/github/Weebly/ghost-io-php/master.svg)]()
 [![MadeBy](https://img.shields.io/badge/made%20by-weebly-2f8be9.svg)]()
 
 
