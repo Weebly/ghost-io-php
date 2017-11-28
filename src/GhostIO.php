@@ -65,10 +65,10 @@ class GhostIO
 	 * Method to get all the Tags of the account.
 	 * @return Collection  		All tags
 	 */
-	public function getAllTags(array $fields = [])
+	public function getAllTags(array $fields = [], $limit = 15)
 	{
 		$provider = TagProvider::getInstance($this->client);
-		return $provider->getAll($fields);
+		return $provider->getAll($fields, $limit);
 	}
 
 	/**
