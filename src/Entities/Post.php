@@ -13,6 +13,7 @@ class Post extends JsonSerializableObject
 	protected $slug;
 	protected $markdown;
 	protected $html;
+    protected $plaintext;
 	protected $image;
 	protected $featured;
 	protected $page;
@@ -266,5 +267,25 @@ class Post extends JsonSerializableObject
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @param mixed $tags
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlaintext()
+    {
+        return $this->plaintext;
     }
 }

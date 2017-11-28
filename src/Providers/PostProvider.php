@@ -20,6 +20,7 @@ class PostProvider
 		$options = [
 			'query' => [
 				'limit' => $limit,
+				'formats' => ['html', 'plaintext'],
 				'include' => [ 'tags' ] // We include all the tag information by default
 			]
 		];

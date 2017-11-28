@@ -82,6 +82,7 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
                        		'query' => [
                        			'fields' => ['id', 'html'],
                        			'limit' => 15,
+                       			'formats' => ['html', 'plaintext'],
                        			'include' => ['tags']
                        		]
                        	]
