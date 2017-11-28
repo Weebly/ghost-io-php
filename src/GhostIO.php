@@ -33,10 +33,10 @@ class GhostIO
 	 * because it will get all the records if you limit the request as "all"
 	 * @return Collection  		All posts
 	 */
-	public function getAllPosts(array $fields = [])
+	public function getAllPosts(array $fields = [], $limit = 15)
 	{
 		$provider = PostProvider::getInstance($this->client);
-		return $provider->getAll($fields);
+		return $provider->getAll($fields, $limit);
 	}
 
 	/**
@@ -96,10 +96,10 @@ class GhostIO
 	 * Method to get all the Users of the account.
 	 * @return Collection  		All users
 	 */
-	public function getAllUsers(array $fields = [])
+	public function getAllUsers(array $fields = [], $limit = 15)
 	{
 		$provider = UserProvider::getInstance($this->client);
-		return $provider->getAll($fields);
+		return $provider->getAll($fields, $limit);
 	}
 
 	/**

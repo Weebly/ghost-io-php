@@ -14,13 +14,15 @@ class UserProvider
 	 * Method to get all the users of the account.
 	 * @return Collection  		All users
 	 */
-	public function getAll(array $fields = [])
+	public function getAll(array $fields = [], $limit = 15)
 	{
-		$options = [];
+		$options = [
+			'query' => ['limit' => $limit ]
+		];
 
 		// filtering the fields we want to get
 		if (!empty($fields)) {
-			$options['query'] = [ 'fields' => $fields ];
+			$options['query']['fields'] = $fields;
 		}
 
 		// Do the /users request

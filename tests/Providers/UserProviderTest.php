@@ -76,9 +76,14 @@ class UserProviderTest extends PHPUnit_Framework_TestCase
         $this->clientMock->expects($this->once())
         		->method('request')
         		->with(
-                       $this->equalTo('GET'),
-                       $this->equalTo('users'),
-                       [ 'query' => [ 'fields' => ['id', 'html']] ]
+                       	$this->equalTo('GET'),
+                       	$this->equalTo('users'),
+                       	[
+                       		'query' => [
+                       			'fields' => ['id', 'html'],
+                       			'limit' => 15
+                       		]
+                       	]
                    )
             	->willReturn($apiResponse);
 

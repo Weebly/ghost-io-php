@@ -78,7 +78,13 @@ class PostProviderTest extends PHPUnit_Framework_TestCase
         		->with(
                        $this->equalTo('GET'),
                        $this->equalTo('posts'),
-                       [ 'query' => [ 'fields' => ['id', 'html']] ]
+                       	[
+                       		'query' => [
+                       			'fields' => ['id', 'html'],
+                       			'limit' => 15,
+                       			'include' => ['tags']
+                       		]
+                       	]
                    )
             	->willReturn($apiResponse);
 

@@ -15,16 +15,18 @@ class PostProvider
 	 * because it will get all the records if you limit the request as "all"
 	 * @return Collection  		All posts
 	 */
-	public function getAll(array $fields = [])
+	public function getAll(array $fields = [], $limit = 15)
 	{
-		$options = [];
-
-		// We include all the tag information by default
-		$options['query'] = [ 'include' => ['tags'] ];
+		$options = [
+			'query' => [
+				'limit' => $limit,
+				'include' => [ 'tags' ] // We include all the tag information by default
+			]
+		];
 
 		// filtering the fields we want to get
 		if (!empty($fields)) {
-			$options['query'] = [ 'fields' => $fields ];
+			$options['query']['fields'] = $fields;
 		}
 
 		// Do the /posts request
