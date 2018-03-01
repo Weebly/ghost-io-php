@@ -25,6 +25,10 @@ trait Singleton
 		if (!static::$instance) {
             static::$instance = new static($client);
         }
+
+        // since we can call this for multiple clients we
+        // make sure this client is updated with the latest one
+        static::$instance->setClient($client);
         return static::$instance;
 	}
 
