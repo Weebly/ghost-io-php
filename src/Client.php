@@ -70,9 +70,6 @@ class Client
 		$this->httpClient = new \GuzzleHttp\Client([
 			'base_uri' => $this->baseUri . '/ghost/api/v0.1/'
 		]);
-
-		// Authenticate this object
-		$this->authenticate();
 	}
 
 	/**
@@ -119,6 +116,12 @@ class Client
 	 */
 	public function request($method, $route, $options)
 	{
+		// Make sure we have an auth token
+		if (!$this->isAuthenticated()) {
+			// Authenticate this object
+			$this->authenticate();
+		}
+
 		// Here we prepare the guzzle request
 		$options['headers']['Authorization'] = 'Bearer ' . $this->getToken();
 		$options['headers']['Content-Type'] = 'application/json';
