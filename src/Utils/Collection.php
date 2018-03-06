@@ -12,7 +12,7 @@ class Collection implements Iterator
 	 * Clears the items inside the collection
 	 * @return void
 	 */
-	public function clear() 
+	public function clear()
 	{
 		$this->items = [];
 	}
@@ -23,7 +23,7 @@ class Collection implements Iterator
 	 */
 	public function isEmpty()
 	{
-		return sizeof($this->items) > 0;
+		return sizeof($this->items) === 0;
 	}
 
 	/**
@@ -46,9 +46,9 @@ class Collection implements Iterator
 
 	/**
 	 * Returns the pointer of the array to the first position
-	 * @return array 
+	 * @return array
 	 */
-	function rewind() 
+	function rewind()
 	{
 		return reset($this->items);
 	}
@@ -57,7 +57,7 @@ class Collection implements Iterator
 	 * Gives us the current element of the array
 	 * @return mixed The item that is selected by the pointer
 	 */
-	function current() 
+	function current()
 	{
 		return current($this->items);
 	}
@@ -66,7 +66,7 @@ class Collection implements Iterator
 	 * Gives us the key of the current item
 	 * @return key The key
 	 */
-	function key() 
+	function key()
 	{
 		return key($this->items);
 	}
@@ -75,16 +75,16 @@ class Collection implements Iterator
 	 * Changes the pointer to the next element
 	 * @return mixed The next item
 	 */
-	function next() 
+	function next()
 	{
 		return next($this->items);
 	}
 
 	/**
-	 * Check if the current element is something 
+	 * Check if the current element is something
 	 * @return bool if the element is valid
 	 */
-	function valid() 
+	function valid()
 	{
 		return key($this->items) !== null;
 	}
