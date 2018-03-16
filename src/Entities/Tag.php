@@ -14,13 +14,13 @@ class Tag extends JsonSerializableObject
 	protected $hidden;
 	protected $visibility;
 	protected $parent;
-	protected $image;
 	protected $metaTitle;
 	protected $metaDescription;
 	protected $createdAt;
 	protected $createdBy;
 	protected $updatedAt;
 	protected $updatedBy;
+    protected $featureImage;
 
     /**
      * @return integer
@@ -89,14 +89,6 @@ class Tag extends JsonSerializableObject
     /**
      * @return string
      */
-    public function getImage()
-    {
-        return $this->image;
-    }
-
-    /**
-     * @return string
-     */
     public function getMetaTitle()
     {
         return $this->metaTitle;
@@ -140,5 +132,13 @@ class Tag extends JsonSerializableObject
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFeatureImage()
+    {
+        return $this->featureImage;
     }
 }

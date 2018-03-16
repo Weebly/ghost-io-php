@@ -2,7 +2,7 @@
 
 namespace GhostIO\Tests\Providers;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use GhostIO\Providers\PostProvider;
 use GhostIO\Tests\Mocks\ResponseDummy;
 use GhostIO\Tests\Mocks\ResponseBodyDummy;
@@ -11,7 +11,7 @@ use GhostIO\Tests\Mocks\ResponseBodyDummy;
 *  Corresponding Class to test PostProvider class
 *  @author Enrique <enrique@weebly.com>
 */
-class PostProviderTest extends PHPUnit_Framework_TestCase
+class PostProviderTest extends TestCase
 {
 
 	protected $provider;

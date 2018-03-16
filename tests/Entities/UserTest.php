@@ -1,12 +1,13 @@
-<?php 
+<?php
 
 use GhostIO\Entities\User;
+use PHPUnit\Framework\TestCase;
 
 /**
 *  Corresponding Class to test User class
 *  @author Enrique <enrique@weebly.com>
 */
-class UserTest extends PHPUnit_Framework_TestCase
+class UserTest extends TestCase
 {
 
 	protected $user;
@@ -18,7 +19,7 @@ class UserTest extends PHPUnit_Framework_TestCase
     }
 
 	/**
-	* Just check if the User has no syntax error 
+	* Just check if the User has no syntax error
 	*
 	* This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
 	* any typo before you even use this library in a real project.

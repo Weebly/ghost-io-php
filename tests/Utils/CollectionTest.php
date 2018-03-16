@@ -2,14 +2,14 @@
 
 namespace GhostIO\Tests\Utils;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use GhostIO\Utils\Collection;
 
 /**
 *  Corresponding Class to test the collections class
 *  @author Enrique <enrique@weebly.com>
 */
-class PostProviderTest extends PHPUnit_Framework_TestCase
+class PostProviderTest extends TestCase
 {
 
 	protected $collection;

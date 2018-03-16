@@ -14,7 +14,6 @@ class Post extends JsonSerializableObject
 	protected $markdown;
 	protected $html;
     protected $plaintext;
-	protected $image;
 	protected $featured;
 	protected $page;
 	protected $status;
@@ -115,14 +114,6 @@ class Post extends JsonSerializableObject
     public function getHtml()
     {
         return $this->html;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**
