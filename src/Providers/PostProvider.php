@@ -21,7 +21,7 @@ class PostProvider
 			'query' => [
 				'limit' => $limit,
 				'formats' => ['html', 'plaintext'],
-				'include' => [ 'tags' ] // We include all the tag information by default
+				'include' => [ 'tags', 'authors' ] // We include all the tag information by default
 			]
 		];
 

@@ -83,7 +83,7 @@ class PostProviderTest extends TestCase
                        			'fields' => ['id', 'html'],
                        			'limit' => 15,
                        			'formats' => ['html', 'plaintext'],
-                       			'include' => ['tags']
+                       			'include' => ['tags', 'authors']
                        		]
                        	]
                    )
