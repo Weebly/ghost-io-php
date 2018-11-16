@@ -7,65 +7,66 @@ use GhostIO\Utils\JsonSerializableObject;
 
 class Post extends JsonSerializableObject
 {
-	protected $id;
-	protected $uuid;
-	protected $title;
-	protected $slug;
-	protected $markdown;
-	protected $html;
+    protected $id;
+    protected $uuid;
+    protected $title;
+    protected $slug;
+    protected $markdown;
+    protected $html;
     protected $plaintext;
-	protected $featured;
-	protected $page;
-	protected $status;
-	protected $locale;
-	protected $metaTitle;
-	protected $metaDescription;
-	protected $createdAt;
-	protected $createdBy;
-	protected $updatedAt;
-	protected $updatedBy;
-	protected $publishedAt;
-	protected $publishedBy;
-	protected $author;
-	protected $url;
-	protected $language;
-	protected $visibility;
-	protected $featureImage;
-	protected $tags;
+    protected $image;
+    protected $featured;
+    protected $page;
+    protected $status;
+    protected $locale;
+    protected $metaTitle;
+    protected $metaDescription;
+    protected $createdAt;
+    protected $createdBy;
+    protected $updatedAt;
+    protected $updatedBy;
+    protected $publishedAt;
+    protected $publishedBy;
+    protected $authors;
+    protected $url;
+    protected $language;
+    protected $visibility;
+    protected $featureImage;
+    protected $tags;
 
 
-	/**
+    /**
      * Constructor. We want to make sure that when we send data to it, it will
      * add those values to the property of the object.
-     * @param array $data 	Data for the object
+     * @param array $data   Data for the object
      */
     function __construct($data = null)
-	{
-		if ($data) {
-			foreach ($data as $key => $value) {
+    {
+        if ($data) {
+            foreach ($data as $key => $value) {
 
-				// Here we will create the tags collection of all the
-				// tags that are related to this post
-				if ($key == 'tags') {
+                // Here we will create the tags collection of all the
+                // tags that are related to this post
+                if ($key == 'tags') {
 
-					// Cleanup the data into objects
-					$tagCollection = new Collection();
-					foreach ($value as $tagData) {
-						$tag = new Tag($tagData);
-						$tagCollection->add($tag);
-					}
+                    // Cleanup the data into objects
+                    $tagCollection = new Collection();
+                    foreach ($value as $tagData) {
+                        $tag = new Tag($tagData);
+                        $tagCollection->add($tag);
+                    }
 
-					$this->tags = $tagCollection;
-					continue;
-				}
+                    $this->tags = $tagCollection;
+                    continue;
+                }
 
-				$key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
-				$key = lcfirst($key);
+                $key = str_replace(' ', '', ucwords(str_replace('_', ' ', $key)));
+                $key = lcfirst($key);
 
-				$this->{$key} = $value;
-			}
-		}
-	}
+                $this->{$key} = $value;
+            }
+        }
+    }
 
 
     /**
@@ -114,6 +115,14 @@ class Post extends JsonSerializableObject
     public function getHtml()
     {
         return $this->html;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
@@ -215,9 +224,9 @@ class Post extends JsonSerializableObject
     /**
      * @return string
      */
-    public function getAuthor()
+    public function getAuthors()
     {
-        return $this->author;
+        return $this->authors;
     }
 
     /**
