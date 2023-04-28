@@ -4,6 +4,8 @@ namespace GhostIO;
 
 class Client
 {
+    const ACCEPT_VERSION = 'v0.1';
+
 	/**
 	 * Blog Base Uri
 	 * @var string
@@ -68,7 +70,7 @@ class Client
 	{
 		// Initialize the guzzle client
 		$this->httpClient = new \GuzzleHttp\Client([
-			'base_uri' => $this->baseUri . '/ghost/api/v0.1/'
+			'base_uri' => $this->baseUri . '/ghost/api/'
 		]);
 	}
 
@@ -89,6 +91,9 @@ class Client
 	protected function authenticate()
 	{
 		$response = $this->httpClient->request('POST', 'authentication/token', [
+            'headers' => [
+                'Accept-Version' => self::ACCEPT_VERSION,
+            ],
 			'form_params' => [
 				'grant_type' 	=> 'password',
 				'username' 		=> $this->username,
@@ -125,6 +130,7 @@ class Client
 		// Here we prepare the guzzle request
 		$options['headers']['Authorization'] = 'Bearer ' . $this->getToken();
 		$options['headers']['Content-Type'] = 'application/json';
+		$options['headers']['Accept-Version'] = self::ACCEPT_VERSION;
 
 		// Do a guzzle request
 		return $this->httpClient->request($method, $route, $options);
